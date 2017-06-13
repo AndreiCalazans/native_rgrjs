@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule AppAllPostQuery.graphql
- * @generated SignedSource<<a2a181c5c1e63c8bf08cd0372c68f59d>>
- * @relayHash da7bf704df93706f02fe9f23a3d218a3
+ * @generated SignedSource<<dfc3985b5b88a00aacf21615b41e6217>>
+ * @relayHash c9f0550a5818e1f06d194bd893cc0c4b
  * @flow
  * @nogrep
  */
@@ -29,12 +29,20 @@ query AppAllPostQuery {
 
 fragment Main_store on Store {
   id
-  linkConnection {
+  linkConnection(last: 100) {
     edges {
       node {
         id
         ...Link_link
+        __typename
       }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
     }
   }
 }
@@ -100,7 +108,14 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
+                "type": "Int"
+              }
+            ],
             "concreteType": "LinkConnection",
             "name": "linkConnection",
             "plural": false,
@@ -148,22 +163,91 @@ const batch /*: ConcreteBatch*/ = {
                         "args": null,
                         "name": "createdAt",
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "__typename",
+                        "storageKey": null
                       }
                     ],
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "endCursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasNextPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "startCursor",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "linkConnection{\"last\":100}"
+          },
+          {
+            "kind": "LinkedHandle",
+            "alias": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "last",
+                "value": 100,
+                "type": "Int"
+              }
+            ],
+            "handle": "connection",
+            "name": "linkConnection",
+            "key": "Main_linkConnection",
+            "filters": []
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query AppAllPostQuery {\n  store {\n    ...Main_store\n    id\n  }\n}\n\nfragment Main_store on Store {\n  id\n  linkConnection {\n    edges {\n      node {\n        id\n        ...Link_link\n      }\n    }\n  }\n}\n\nfragment Link_link on Link {\n  url\n  title\n  createdAt\n}\n"
+  "text": "query AppAllPostQuery {\n  store {\n    ...Main_store\n    id\n  }\n}\n\nfragment Main_store on Store {\n  id\n  linkConnection(last: 100) {\n    edges {\n      node {\n        id\n        ...Link_link\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Link_link on Link {\n  url\n  title\n  createdAt\n}\n"
 };
 
 module.exports = batch;

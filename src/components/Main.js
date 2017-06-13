@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer( Main, graphql`
     fragment Main_store on Store {
         id,
-        linkConnection {
+        linkConnection(first: 2147483647) @connection(key:"Main_links", filters: []) {
             edges {
                 node {
                     id,
