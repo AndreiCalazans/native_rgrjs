@@ -35,7 +35,7 @@ class Main extends React.Component {
   render() {
     console.log('mainComponent', this.props);
     let content = this.props.store.linkConnection.edges.map((item) => {
-      return <Link key={item.node.id} link={item.node} />
+      return <Link key={item.node.id} link={item.node} store={this.props.store} />
     });
     return (
       <ScrollView>
@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
 
 export default createFragmentContainer( Main, graphql`
     fragment Main_store on Store {
+        ...Link_store,
         id,
-        linkConnection(first: 2147483647) @connection(key:"Main_links", filters: []) {
+        linkConnection(first: 2147483647) @connection(key:"Main_linkConnection", filters: []) {
             edges {
                 node {
                     id,

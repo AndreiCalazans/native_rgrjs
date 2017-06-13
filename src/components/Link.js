@@ -3,9 +3,10 @@ import {
     createFragmentContainer,
     graphql
 } from 'react-relay';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import moment from 'moment';
 
+import DeleteLinkMutation from '../DeleteLinkMutation';
 
 
 class Link extends React.Component {
@@ -23,22 +24,25 @@ class Link extends React.Component {
                  <Text key='3'>
                    {link.createdAt}
                 </Text>  , 
-                <Text key='4' onPress={this._handleDelete}>
-                    Delete
-                </Text> 
+                <Button key='4' onPress={this._handleDelete} title='Delete' underlayColor='red' /> 
                 ]}         
             </View>
         )
     }
 
     _handleDelete = () => {
-       
+        console.log('handledelete: ', this.props);
+    DeleteLinkMutation(this.props.link.id, this.props.store.id );
     }
 }
 
 
 export default createFragmentContainer( Link, graphql`
+    fragment Link_store on Store {
+        id
+    }
     fragment Link_link on Link {
+            id,
             url,
             title,
             createdAt

@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule AppAllPostQuery.graphql
- * @generated SignedSource<<dfc3985b5b88a00aacf21615b41e6217>>
- * @relayHash c9f0550a5818e1f06d194bd893cc0c4b
+ * @generated SignedSource<<7dec59b445d9a56f90e58bba0b34f166>>
+ * @relayHash 4d40392d8895533cfda3f7e1ec64721d
  * @flow
  * @nogrep
  */
@@ -28,8 +28,9 @@ query AppAllPostQuery {
 }
 
 fragment Main_store on Store {
+  ...Link_store
   id
-  linkConnection(last: 100) {
+  linkConnection(first: 2147483647) {
     edges {
       node {
         id
@@ -47,7 +48,12 @@ fragment Main_store on Store {
   }
 }
 
+fragment Link_store on Store {
+  id
+}
+
 fragment Link_link on Link {
+  id
   url
   title
   createdAt
@@ -111,8 +117,8 @@ const batch /*: ConcreteBatch*/ = {
             "args": [
               {
                 "kind": "Literal",
-                "name": "last",
-                "value": 100,
+                "name": "first",
+                "value": 2147483647,
                 "type": "Int"
               }
             ],
@@ -224,7 +230,7 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               }
             ],
-            "storageKey": "linkConnection{\"last\":100}"
+            "storageKey": "linkConnection{\"first\":2147483647}"
           },
           {
             "kind": "LinkedHandle",
@@ -232,8 +238,8 @@ const batch /*: ConcreteBatch*/ = {
             "args": [
               {
                 "kind": "Literal",
-                "name": "last",
-                "value": 100,
+                "name": "first",
+                "value": 2147483647,
                 "type": "Int"
               }
             ],
@@ -247,7 +253,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AppAllPostQuery {\n  store {\n    ...Main_store\n    id\n  }\n}\n\nfragment Main_store on Store {\n  id\n  linkConnection(last: 100) {\n    edges {\n      node {\n        id\n        ...Link_link\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Link_link on Link {\n  url\n  title\n  createdAt\n}\n"
+  "text": "query AppAllPostQuery {\n  store {\n    ...Main_store\n    id\n  }\n}\n\nfragment Main_store on Store {\n  ...Link_store\n  id\n  linkConnection(first: 2147483647) {\n    edges {\n      node {\n        id\n        ...Link_link\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Link_store on Store {\n  id\n}\n\nfragment Link_link on Link {\n  id\n  url\n  title\n  createdAt\n}\n"
 };
 
 module.exports = batch;

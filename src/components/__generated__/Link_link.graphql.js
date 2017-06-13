@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Link_link.graphql
- * @generated SignedSource<<4557a2006d021fe61dc9a910b614ed9a>>
+ * @generated SignedSource<<31a7c5c5750d9a01b0d58ab6d6d57880>>
  * @flow
  * @nogrep
  */
@@ -15,6 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Link_link = {|
+  +id: string;
   +url: ?string;
   +title: ?string;
   +createdAt: ?string;
@@ -28,6 +29,13 @@ const fragment /*: ConcreteFragment*/ = {
   "metadata": null,
   "name": "Link_link",
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "id",
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,

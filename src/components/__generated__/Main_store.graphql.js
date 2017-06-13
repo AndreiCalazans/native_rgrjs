@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Main_store.graphql
- * @generated SignedSource<<81b93d49f41643a24f80eefa88b19ff1>>
+ * @generated SignedSource<<d3d403df10ac8738e876ba7d05c575a9>>
  * @flow
  * @nogrep
  */
@@ -35,7 +35,7 @@ const fragment /*: ConcreteFragment*/ = {
       {
         "count": null,
         "cursor": null,
-        "direction": "backward",
+        "direction": "forward",
         "path": [
           "linkConnection"
         ]
@@ -44,6 +44,11 @@ const fragment /*: ConcreteFragment*/ = {
   },
   "name": "Main_store",
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "Link_store",
+      "args": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,

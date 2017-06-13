@@ -21,12 +21,9 @@ const mutation = graphql`
 
 function sharedUpdater(proxyStore , viewerId , newLink){
      const viewerProxy = proxyStore.get(viewerId);
-     console.log('sharedUpdater:',viewerProxy);
-     const connection = ConnectionHandler.getConnection(viewerProxy, 'Main_links');
-     // connection is returning undefined
+     const connection = ConnectionHandler.getConnection(viewerProxy, 'Main_linkConnection');
      if (connection) {
         ConnectionHandler.insertEdgeAfter(connection, newLink);
-        console.log('passed the connection: ', connection);
      }
 }
 let tempID = 0;
@@ -59,14 +56,12 @@ export default (title, url, viewerId, callback) => {
         
                 newEdge.setLinkedRecord(newLink , 'node');
                 // add new link to the store
-                console.log('optimistic', newEdge);
                sharedUpdater(proxyStore, viewerId , newEdge);
 
             },
             updater: (proxyStore) => {
                 // retieve the newLink from the server response
                 const createLinkField = proxyStore.getRootField('createLink');
-                console.log('updater', createLinkField); 
                 const newLink = createLinkField.getLinkedRecord('linkEdge');
 
                 // add newLink to the store
