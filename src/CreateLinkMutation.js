@@ -23,6 +23,7 @@ function sharedUpdater(proxyStore , viewerId , newLink){
      const viewerProxy = proxyStore.get(viewerId);
      console.log('sharedUpdater:',viewerProxy);
      const connection = ConnectionHandler.getConnection(viewerProxy, 'Main_links');
+     // connection is returning undefined
      console.log('passed the connection: ', connection);
      ConnectionHandler.insertEdgeAfter(connection, newLink);
 }
