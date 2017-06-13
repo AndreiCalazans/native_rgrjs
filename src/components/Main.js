@@ -4,32 +4,7 @@ import {
     createFragmentContainer,
     graphql
 } from 'react-relay';
-// use it to delay function call
-import {debounce} from 'lodash';
 import Link from './Link';
-
-// const mockData = [
-//     { 
-//         node: {
-//         title: 'google',
-//         url: 'www.google.com',
-//         createdAt: new Date()
-//     }
-// },
-//  { 
-//         node: {
-//         title: 'google',
-//         url: 'www.google.com',
-//         createdAt: new Date()
-//     }
-// },
-//  { 
-//         node: {
-//         title: 'google',
-//         url: 'www.google.com',
-//         createdAt: new Date()
-//     }
-// }];
 
 class Main extends React.Component {
   render() {

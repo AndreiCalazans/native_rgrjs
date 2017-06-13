@@ -15,14 +15,14 @@ class Link extends React.Component {
         return (
             <View style={styles.container}>
                 {[
-                <Text key='1'>
+                <Text key='1' style={styles.title}>
                 {link.title}
                 </Text>,      
-                 <Text key='2'>
+                 <Text key='2' style={styles.url}>
                 {link.url}
                  </Text>,
-                 <Text key='3'>
-                   {link.createdAt}
+                 <Text key='3' style={styles.time}>
+                   {moment(link.createdAt).format('lll')}
                 </Text>  , 
                 <Button key='4' onPress={this._handleDelete} title='Delete' underlayColor='red' /> 
                 ]}         
@@ -55,5 +55,13 @@ const styles = StyleSheet.create({
         margin: 10,
         borderColor: 'black',
         borderWidth: 2
+    },
+    title: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 18
+    },
+    url: {
+        color: 'red'
     }
 })

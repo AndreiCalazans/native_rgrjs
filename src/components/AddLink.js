@@ -24,8 +24,8 @@ class AddLink extends React.Component{
         this.state = {title: '', url: ''}
     }
 
-    navigationOptions = {
-        title: 'Add Link'
+    static navigationOptions = {
+        title: 'Add a Link'
     }
 
     _onSubmit(viewerId) {
@@ -53,8 +53,8 @@ class AddLink extends React.Component{
                                 onChangeText={(url) => this.setState({url})}> 
                                 </TextInput>
                                 <TouchableHighlight onPress={() => this._onSubmit(props.store.id)} underlayColor='lightblue'>
-                                    <View>
-                                        <Text>Save Link</Text>
+                                    <View style={styles.btn}>
+                                        <Text style={{textAlign: 'center'}}>Save Link</Text>
                                     </View>
                                 </TouchableHighlight>
                              </View>
@@ -71,6 +71,11 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         padding: 5
+    },
+    btn: {
+        backgroundColor: 'lightblue',
+        padding: 10,
+        margin: 10
     }
 })
 

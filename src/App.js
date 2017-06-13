@@ -46,13 +46,15 @@ class App extends React.Component {
     }
     static navigationOptions =({navigation}) => ({
         title: 'Home',
-        headerRight: <View style={{ margin: 5 }}><Button underlayColor='lightblue' onPress={() => navigation.navigate('AddLink') } title='Add Link'/></View>
+        headerRight: 
+        <View style={{ margin: 5 }}>
+            <Button underlayColor='lightblue' onPress={() => navigation.navigate('AddLink') } title='Add Link'/> 
+        </View>
     })
 
     render() {
         return (
             <View style={styles.container}>
-            <Text>My app</Text>
            <QueryRenderer
                 environment={environment}
                 query={AppAllLinksQuery}
